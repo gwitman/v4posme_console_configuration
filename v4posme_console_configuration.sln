@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "v4posme_console_configuration", "v4posme_console_configuration\v4posme_console_configuration.csproj", "{2D5E5AD7-E2C4-4177-A36D-EC599D52B90F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D5E5AD7-E2C4-4177-A36D-EC599D52B90F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D5E5AD7-E2C4-4177-A36D-EC599D52B90F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D5E5AD7-E2C4-4177-A36D-EC599D52B90F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D5E5AD7-E2C4-4177-A36D-EC599D52B90F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {48A98371-86B1-47DE-87FB-16A3DA4B99AF}
+	EndGlobalSection
+EndGlobal
