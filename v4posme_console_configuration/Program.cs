@@ -81,11 +81,12 @@ namespace v4posme_console_configuration
                     Console.WriteLine("1. Instalar todos los programas");
                     Console.WriteLine("2. Ejecutar todos los .bat");
 
-                    Console.WriteLine("3. Mover la carpeta de de posMe al directorio de Xampp");
-                    Console.WriteLine("4. Mover extension de Source guardian");
-                    Console.WriteLine("5. Crear acceso directo del link de posMe");
-                    Console.WriteLine("6. Realizar reemplazo en archivos de configuracion");
-                    Console.WriteLine("7. Salir");
+                    Console.WriteLine("3. Mover la carpeta de de posMe al directorio de Xampp para Instalar");
+                    Console.WriteLine("4. Mover la carpeta de de posMe al directorio de Xampp para Actualizar");
+                    Console.WriteLine("5. Mover extension de Source guardian");
+                    Console.WriteLine("6. Crear acceso directo del link de posMe");
+                    Console.WriteLine("7. Realizar reemplazo en archivos de configuracion");
+                    Console.WriteLine("8. Salir");
                     Console.Write("Selecciona una opción: ");
 
                     string opcion = Console.ReadLine();
@@ -95,12 +96,19 @@ namespace v4posme_console_configuration
                     {
                         case "3":
                             Console.WriteLine($"\n\n");
-                            Console.WriteLine($"Mover carpeta de posMe");
+                            Console.WriteLine($"Mover carpeta de posMe para Instalar");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
                             MoveFolderWithBackup(@"C:\\TeamDS-Importacion\\v4posme", @"C:\\xampp\\teamds2\\nsSystem\\v4posme");
                             break;
                         case "4":
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Mover carpeta de posMe para Actualizar");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            MoveFolderWithBackupToUpdate(@"C:\\TeamDS-Importacion\\v4posme", @"C:\\xampp\\teamds2\\nsSystem\\v4posme");
+                            break;
+                        case "5":
                             // Llamada a la nueva función para mover archivos DLL
                             Console.WriteLine($"\n\n");
                             Console.WriteLine($"Mover archivo DLL guardian");
@@ -109,7 +117,7 @@ namespace v4posme_console_configuration
                             MoveFileDllGuardian(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\dll\\ixed.8.0ts.win", @"C:\\xampp\\php\\ext\\ixed.8.0ts.win");
                             break;
 
-                        case "5":
+                        case "6":
                             // Crear un acceso directo en el escritorio
                             Console.WriteLine($"\n\n");
                             Console.WriteLine($"Crear acceso directo de posMe");
@@ -132,11 +140,11 @@ namespace v4posme_console_configuration
 
                             break;
 
-                        case "6":
+                        case "7":
                             RealizarReemplazos(reemplazos);
                             break;
 
-                        case "7":
+                        case "8":
                             Console.WriteLine("Saliendo del programa...");
                             return;
 
@@ -315,7 +323,65 @@ namespace v4posme_console_configuration
                 Console.WriteLine($"Error al mover la carpeta: {ex.Message}");
             }
         }
+        
+        static void MoveFolderWithBackupToUpdate(string sourceFolder, string destinationFolder)
+        {
+            try
+            {
+                var excludedFiles = new HashSet<string>
+                {
+                    "direct-ticket-logo-micro-finanza.jpg", // Reemplaza con los nombres de archivo exactos
+                    "direct-ticket-logo-micro-finanza.png",
+                    "logo-micro-finanza.jpg",
+                    "logo-micro-finanza.png"
+                };
 
+
+                if (!Directory.Exists(sourceFolder))
+                {
+                    Console.WriteLine($"La carpeta de origen no existe: {sourceFolder}");
+                    return;
+                }
+
+                if (Directory.Exists(destinationFolder))
+                {
+                    string backupFolder = destinationFolder + "_backup_" + DateTime.Now.ToString("yyyy_MM_ddH_Hmmss");
+                    Directory.Move(destinationFolder, backupFolder);
+                    Console.WriteLine($"Carpeta de destino respaldada como: {backupFolder}");
+                }
+
+                Directory.CreateDirectory(destinationFolder);
+                foreach (string file in Directory.GetFiles(sourceFolder, "*", SearchOption.AllDirectories))
+                {
+                    // Obtiene el nombre del archivo
+                    string fileName = Path.GetFileName(file);
+
+                    // Si el archivo está en la lista de exclusión, lo saltamos
+                    if (excludedFiles.Contains(fileName))
+                    {
+                        Console.WriteLine($"Archivo excluido: {fileName}");
+                        continue;
+                    }
+
+
+                    string destinationFile  = file.Replace(sourceFolder, destinationFolder);
+                    string destinationDir   = Path.GetDirectoryName(destinationFile);
+
+                    if (!Directory.Exists(destinationDir))
+                    {
+                        Directory.CreateDirectory(destinationDir);
+                    }
+
+                    System.IO.File.Copy(file, destinationFile, true);
+                }
+
+                Console.WriteLine($"Carpeta movida exitosamente a: {destinationFolder}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al mover la carpeta: {ex.Message}");
+            }
+        }
 
     }
 }
