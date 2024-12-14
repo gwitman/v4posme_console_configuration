@@ -37,24 +37,23 @@ namespace v4posme_console_configuration
 
                 new Reemplazo(@"C:\xampp\phpMyAdmin\libraries\config.default.php","$cfg['ExecTimeLimit'] = 300;","$cfg['ExecTimeLimit'] = 600;"),
 
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "post_max_size=40M", "post_max_size=80M\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "upload_max_filesize=40M", "upload_max_filesize=80M\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "date.timezone=Europe/Berlin", "date.timezone=America/Managua\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "SMTP=localhost", "SMTP=smtp.gmail.com\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "smtp_port=25", "smtp_port=465\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";sendmail_from = me@example.com", "sendmail_from=posme2022@gmail.com\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";sendmail_path =", "sendmail_path=\"\\\"C:\\xampp\\sendmail\\sendmail.exe\\\" -t\"\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "session.gc_maxlifetime=1440","session.gc_maxlifetime=86400\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "session.cache_expire=180", "session.cache_expire=1440\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "session.cookie_lifetime=0", "session.cookie_lifetime=0\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";max_input_vars = 1000", "max_input_vars = 10000\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "max_execution_time=120", "max_execution_time=0\t"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  "post_max_size=40M", "post_max_size=80M"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  "upload_max_filesize=40M", "upload_max_filesize=80M"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  "date.timezone=Europe/Berlin", "date.timezone=America/Managua"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=xsl", ";extension=xsl\r\nextension=ixed.8.0ts.win"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  "SMTP=localhost", "SMTP=smtp.gmail.com"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  "smtp_port=25", "smtp_port=465"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";sendmail_from = me@example.com", "sendmail_from=posme2022@gmail.com"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";sendmail_path =", "sendmail_path=\"\\\"C:\\xampp\\sendmail\\sendmail.exe\\\" -t\""),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  "session.gc_maxlifetime=1440","session.gc_maxlifetime=86400"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  "session.cache_expire=180", "session.cache_expire=1440"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  "session.cookie_lifetime=0", "session.cookie_lifetime=0"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";max_input_vars = 1000", "max_input_vars = 10000"),
+                new Reemplazo(@"C:\xampp\php\php.ini",                                  "max_execution_time=120", "max_execution_time=0"),
                 new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=intl", "extension=intl\t"),
                 new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=gd", "extension=gd\t"),
                 new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=soap", "extension=soap\t"),
                 new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=imap", "extension=imap\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=xsl", ";extension=xsl\r\nextension=ixed.8.0ts.win\t"),
-                
                 
                 new Reemplazo(@"C:\xampp\sendmail\sendmail.ini",                        "smtp_server=mail.mydomain.com", "smtp_server=smtp.gmail.com"),
                 new Reemplazo(@"C:\xampp\sendmail\sendmail.ini",                        "smtp_port=25", "smtp_port=465"),
@@ -79,11 +78,14 @@ namespace v4posme_console_configuration
                 {
                     Console.Clear();
                     Console.WriteLine("Menú Principal:");
-                    Console.WriteLine("1. Mover archivo Source Guardian");
-                    Console.WriteLine("2. Crear acceso directo de posMe");
-                    Console.WriteLine("3. Ejecutar archivo .bat de limpieza de Datos");
-                    Console.WriteLine("4. Realizar reemplazo en archivos de configuracion");
-                    Console.WriteLine("5. Salir");
+                    Console.WriteLine("1. Instalar todos los programas");
+                    Console.WriteLine("2. Ejecutar todos los .bat");
+
+                    Console.WriteLine("3. Mover la carpeta de de posMe al directorio de Xampp");
+                    Console.WriteLine("4. Mover extension de Source guardian");
+                    Console.WriteLine("5. Crear acceso directo del link de posMe");
+                    Console.WriteLine("6. Realizar reemplazo en archivos de configuracion");
+                    Console.WriteLine("7. Salir");
                     Console.Write("Selecciona una opción: ");
 
                     string opcion = Console.ReadLine();
@@ -91,7 +93,14 @@ namespace v4posme_console_configuration
 
                     switch (opcion)
                     {
-                        case "1":
+                        case "3":
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Mover carpeta de posMe");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            MoveFolderWithBackup(@"C:\\TeamDS-Importacion\\v4posme", @"C:\\xampp\\teamds2\\nsSystem\\v4posme");
+                            break;
+                        case "4":
                             // Llamada a la nueva función para mover archivos DLL
                             Console.WriteLine($"\n\n");
                             Console.WriteLine($"Mover archivo DLL guardian");
@@ -100,7 +109,7 @@ namespace v4posme_console_configuration
                             MoveFileDllGuardian(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\dll\\ixed.8.0ts.win", @"C:\\xampp\\php\\ext\\ixed.8.0ts.win");
                             break;
 
-                        case "2":
+                        case "5":
                             // Crear un acceso directo en el escritorio
                             Console.WriteLine($"\n\n");
                             Console.WriteLine($"Crear acceso directo de posMe");
@@ -123,24 +132,23 @@ namespace v4posme_console_configuration
 
                             break;
 
-                        case "3":
-                            Console.WriteLine($"\n\n");
-                            Console.WriteLine($"Limpiar Datos");
-                            Console.WriteLine($"*******************************************");
-                            Console.WriteLine($"*******************************************");
-                            ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\archivo.bat");
-                            break;
-
-                        case "4":
+                        case "6":
                             RealizarReemplazos(reemplazos);
                             break;
 
-                        case "5":
+                        case "7":
                             Console.WriteLine("Saliendo del programa...");
                             return;
 
                         default:
-                            Console.WriteLine("Opción no válida. Intenta nuevamente.");
+
+                            //Console.WriteLine($"\n\n");
+                            //Console.WriteLine($"Limpiar Datos");
+                            //Console.WriteLine($"*******************************************");
+                            //Console.WriteLine($"*******************************************");
+                            //ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\archivo.bat");
+
+                            Console.WriteLine("Opción no válida. Intenta nuevamente o dicha accion se hace manual.");
                             break;
                     }
 
@@ -267,6 +275,47 @@ namespace v4posme_console_configuration
                 Console.WriteLine($"Error al ejecutar el archivo .bat: {ex.Message}");
             }
         }
+
+
+        static void MoveFolderWithBackup(string sourceFolder, string destinationFolder)
+        {
+            try
+            {
+                if (!Directory.Exists(sourceFolder))
+                {
+                    Console.WriteLine($"La carpeta de origen no existe: {sourceFolder}");
+                    return;
+                }
+
+                if (Directory.Exists(destinationFolder))
+                {
+                    string backupFolder = destinationFolder + "_backup_" + DateTime.Now.ToString("yyyy_MM_ddH_Hmmss");
+                    Directory.Move(destinationFolder, backupFolder);
+                    Console.WriteLine($"Carpeta de destino respaldada como: {backupFolder}");
+                }
+
+                Directory.CreateDirectory(destinationFolder);
+                foreach (string file in Directory.GetFiles(sourceFolder, "*", SearchOption.AllDirectories))
+                {
+                    string destinationFile = file.Replace(sourceFolder, destinationFolder);
+                    string destinationDir = Path.GetDirectoryName(destinationFile);
+
+                    if (!Directory.Exists(destinationDir))
+                    {
+                        Directory.CreateDirectory(destinationDir);
+                    }
+
+                    System.IO.File.Copy(file, destinationFile, true);
+                }
+
+                Console.WriteLine($"Carpeta movida exitosamente a: {destinationFolder}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al mover la carpeta: {ex.Message}");
+            }
+        }
+
 
     }
 }
