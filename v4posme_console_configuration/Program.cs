@@ -43,12 +43,14 @@ namespace v4posme_console_configuration
                     Console.WriteLine("11. Abrir Url de Syn Delete Only Datos");
                     Console.WriteLine("12. Abrir Url de Syn Clear File");
                     Console.WriteLine("\n");
-                    Console.WriteLine("13. restore_backup_biometric.bat");
-                    Console.WriteLine("14. restore_backup_posmev4.bat");
-                    Console.WriteLine("15. restore_backup_posmev4_merge.bat");
-                    Console.WriteLine("16. restore_clear_database.bat");
-                    Console.WriteLine("17. restore_usuarios.bat");
-                    Console.WriteLine("18. ver listado de .sql y ejecutar el seleccionado");
+                    Console.WriteLine("13. Restore_backup_biometric.bat");
+                    Console.WriteLine("14. Restore_backup_posmev4.bat");
+                    Console.WriteLine("15. Restore_backup_posmev4_merge.bat");
+                    Console.WriteLine("16. Restore_clear_database.bat");
+                    Console.WriteLine("17. Restore_usuarios.bat");
+                    Console.WriteLine("18. Ver listado de .sql y ejecutar el seleccionado");
+                    Console.WriteLine("19. Realizar respaldo de posMe");
+                    Console.WriteLine("20. Realizar respaldo de Biometric");
                     Console.Write("Selecciona una opción: ");
 
                     string opcion = Console.ReadLine();
@@ -58,25 +60,38 @@ namespace v4posme_console_configuration
                     {
                         case "18":
 
-                            List<string> listaArchivos = Function.ObtenerListadoArchivos(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_sql");
-                            // Mostrar los archivos en consola
-                            if (listaArchivos.Count > 0)
-                            {
-                                Console.WriteLine("Archivos encontrados:");
-                                foreach (string archivo in listaArchivos)
-                                {
-                                    Console.WriteLine(archivo.Replace(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_sql\", ""));
-                                }
-                                Console.WriteLine("Escriba el nombre del archivo que desea ejecutar:");
-                                string nombreFileToExecute  = Console.ReadLine();
-                                Function.ExecuteBatchFileWidthArgument(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\restore_execute_file.bat", nombreFileToExecute);
-                            }
-                            else
+                            List<string> listaArchivos = Function.ObtenerListadoArchivos(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_sql");                            
+                            if (listaArchivos.Count == 0)
                             {
                                 Console.WriteLine("No se encontraron archivos en la carpeta especificada.");
+                                break;
                             }
+
+
+                            Console.WriteLine("Archivos encontrados:");
+                            foreach (string archivo in listaArchivos)
+                            {
+                                Console.WriteLine(archivo.Replace(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_sql\", ""));
+                            }
+                            Console.WriteLine("Escriba el nombre del archivo a ejecutar:");
+                            string nombreFileToExecute  = Console.ReadLine();
+                            Function.ExecuteBatchFileWidthArgument(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\restore_execute_file.bat", nombreFileToExecute);
                             
                             break;
+                        case "19":
+                            Console.WriteLine($"Respaldo Realizado posMe");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\backup_posmev4.bat");
+                            break;
+
+                        case "20":
+                            Console.WriteLine($"Respaldo Realizado BioMetric");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\backup_biometric.bat");
+                            break;
+
                         case "17":
                             Console.WriteLine($"Restaurar Restaurar Usuario");
                             Console.WriteLine($"*******************************************");
