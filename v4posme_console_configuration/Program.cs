@@ -10,67 +10,16 @@ namespace v4posme_console_configuration
 {
 
     // Definimos una clase para representar los objetos con los tres campos
-    public class Reemplazo
-    {
-        public string NombreArchivo { get; set; }
-        public string Source { get; set; }
-        public string Target { get; set; }
-        public bool LineaEncontrada { get; set; } 
-
-        public Reemplazo(string nombreArchivo, string original, string reemplazo)
-        {
-            NombreArchivo   = nombreArchivo;
-            Source          = original;
-            Target          = reemplazo;
-            LineaEncontrada = false;
-        }
-    }
+   
 
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            List<Reemplazo> reemplazos = new List<Reemplazo>
-            {
-                new Reemplazo(@"C:\xampp\phpMyAdmin\config.inc.php","$cfg['Servers'][$i]['password'] = '';","$cfg['Servers'][$i]['password'] = 'root1.2Blandon';"),
+            
 
-                new Reemplazo(@"C:\xampp\phpMyAdmin\libraries\config.default.php","$cfg['ExecTimeLimit'] = 300;","$cfg['ExecTimeLimit'] = 600;"),
-
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "post_max_size=40M", "post_max_size=80M"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "upload_max_filesize=40M", "upload_max_filesize=80M"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "date.timezone=Europe/Berlin", "date.timezone=America/Managua"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=xsl", ";extension=xsl\r\nextension=ixed.8.0ts.win"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "SMTP=localhost", "SMTP=smtp.gmail.com"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "smtp_port=25", "smtp_port=465"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";sendmail_from = me@example.com", "sendmail_from=posme2022@gmail.com"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";sendmail_path =", "sendmail_path=\"\\\"C:\\xampp\\sendmail\\sendmail.exe\\\" -t\""),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "session.gc_maxlifetime=1440","session.gc_maxlifetime=86400"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "session.cache_expire=180", "session.cache_expire=1440"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "session.cookie_lifetime=0", "session.cookie_lifetime=0"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";max_input_vars = 1000", "max_input_vars = 10000"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  "max_execution_time=120", "max_execution_time=0"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=intl", "extension=intl\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=gd", "extension=gd\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=soap", "extension=soap\t"),
-                new Reemplazo(@"C:\xampp\php\php.ini",                                  ";extension=imap", "extension=imap\t"),
-                
-                new Reemplazo(@"C:\xampp\sendmail\sendmail.ini",                        "smtp_server=mail.mydomain.com", "smtp_server=smtp.gmail.com"),
-                new Reemplazo(@"C:\xampp\sendmail\sendmail.ini",                        "smtp_port=25", "smtp_port=465"),
-                new Reemplazo(@"C:\xampp\sendmail\sendmail.ini",                        "auth_username=", "auth_username=posme2022@gmail.com"),
-                new Reemplazo(@"C:\xampp\sendmail\sendmail.ini",                        "auth_password=", "auth_password=PosmeSoftware2022"),
-                new Reemplazo(@"C:\xampp\sendmail\sendmail.ini",                        "force_sender=", "force_sender=posme2022@gmail.com"),
-                
-                new Reemplazo(@"C:\xampp\apache\conf\extra\httpd-xampp.conf",
-                    "Alias /webalizer \"C:/xampp/webalizer/\"\r\n    <Directory \"C:/xampp/webalizer\">\r\n        <IfModule php_module>\r\n    \t\t<Files \"webalizer.php\">\r\n    \t\t\tphp_admin_flag safe_mode off\r\n    \t\t</Files>\r\n        </IfModule>\r\n        AllowOverride AuthConfig\r\n        Require local\r\n        ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var\r\n    </Directory>",
-                    "Alias /webalizer \"C:/xampp/webalizer/\"\r\n    <Directory \"C:/xampp/webalizer\">\r\n        <IfModule php_module>\r\n    \t\t<Files \"webalizer.php\">\r\n    \t\t\tphp_admin_flag safe_mode off\r\n    \t\t</Files>\r\n        </IfModule>\r\n        AllowOverride AuthConfig\r\n        Require local\r\n        ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var\r\n    </Directory>\r\n\r\n\t#posMe v4 desarrollo\r\n\tAlias /posmev4 \"C:/xampp/teamds2/nsSystem/v4posme/public/\"\r\n\t<Directory \"C:/xampp/teamds2/nsSystem/v4posme/public\">\r\n\t\tOptions Indexes FollowSymLinks Includes ExecCGI\r\n\t\tAllowOverride All\r\n\t\tRequire all granted\r\n\t</Directory>\r\n                    "
-
-                )
-
-
-            };
-
-
+            Function objFunction = new Function();
             try
             {
 
@@ -78,15 +27,28 @@ namespace v4posme_console_configuration
                 {
                     Console.Clear();
                     Console.WriteLine("Menú Principal:");
-                    Console.WriteLine("1. Instalar todos los programas");
-                    Console.WriteLine("2. Ejecutar todos los .bat");
-
-                    Console.WriteLine("3. Mover la carpeta de de posMe al directorio de Xampp para Instalar");
-                    Console.WriteLine("4. Mover la carpeta de de posMe al directorio de Xampp para Actualizar");
-                    Console.WriteLine("5. Mover extension de Source guardian");
-                    Console.WriteLine("6. Crear acceso directo del link de posMe");
-                    Console.WriteLine("7. Realizar reemplazo en archivos de configuracion");
-                    Console.WriteLine("8. Salir");
+                    Console.WriteLine("01. Instalar todos los programas");
+                    Console.WriteLine("02. Salir");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("03. Mover la carpeta de de posMe al directorio de Xampp para Instalar");
+                    Console.WriteLine("04. Mover la carpeta de de posMe al directorio de Xampp para Actualizar");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("05. Mover extension de Source guardian");
+                    Console.WriteLine("06. Crear acceso directo del link de posMe");
+                    Console.WriteLine("07. Realizar reemplazo en archivos de configuracion");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("08. Abrir Url de Syn Structuras");
+                    Console.WriteLine("09. Abrir Url de Syn Insert end Update Datos");
+                    Console.WriteLine("10. Abrir Url de Syn Insert Only Datos");
+                    Console.WriteLine("11. Abrir Url de Syn Delete Only Datos");
+                    Console.WriteLine("12. Abrir Url de Syn Clear File");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("13. restore_backup_biometric.bat");
+                    Console.WriteLine("14. restore_backup_posmev4.bat");
+                    Console.WriteLine("15. restore_backup_posmev4_merge.bat");
+                    Console.WriteLine("16. restore_clear_database.bat");
+                    Console.WriteLine("17. restore_usuarios.bat");
+                    Console.WriteLine("18. ver listado de .sql y ejecutar el seleccionado");
                     Console.Write("Selecciona una opción: ");
 
                     string opcion = Console.ReadLine();
@@ -94,30 +56,134 @@ namespace v4posme_console_configuration
 
                     switch (opcion)
                     {
-                        case "3":
+                        case "18":
+
+                            List<string> listaArchivos = Function.ObtenerListadoArchivos(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_sql");
+                            // Mostrar los archivos en consola
+                            if (listaArchivos.Count > 0)
+                            {
+                                Console.WriteLine("Archivos encontrados:");
+                                foreach (string archivo in listaArchivos)
+                                {
+                                    Console.WriteLine(archivo.Replace(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_sql\", ""));
+                                }
+                                Console.WriteLine("Escriba el nombre del archivo que desea ejecutar:");
+                                string nombreFileToExecute  = Console.ReadLine();
+                                Function.ExecuteBatchFileWidthArgument(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\restore_execute_file.bat", nombreFileToExecute);
+                            }
+                            else
+                            {
+                                Console.WriteLine("No se encontraron archivos en la carpeta especificada.");
+                            }
+                            
+                            break;
+                        case "17":
+
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Restaurar Restaurar Usuario");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\restore_usuarios.bat");
+                            break;
+
+                        case "16":
+
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Restaurar Clear DataBase posMe");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\restore_clear_database.bat");
+                            break;
+
+                        case "15":
+
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Restaurar Merge");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\restore_backup_posmev4_merge.bat");
+                            break;
+
+                        case "13":
+
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Restaurar Biometric");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\restore_backup_biometric.bat");
+                            break;
+
+                        case "14":
+
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Restaurar posMe");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\restore_backup_posmev4.bat");
+                            break;
+
+                        case "08":
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Abrir Url de Syn Structuras");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.AbrirURL(@"http://localhost/posmev4/core_merge/merge_of_posme_merge_to_posme_structure/2");
+                            break;
+                        case "09":
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Abrir Url de Syn Insert end Update Datos");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.AbrirURL(@"http://localhost/posmev4/core_merge/merge_of_posme_merge_to_posme_data_insert_and_update/2");
+                            break;
+                        case "10":
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Abrir Url de Syn Insert Only Datos");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.AbrirURL(@"http://localhost/posmev4/core_merge/merge_of_posme_merge_to_poeme_data_onlyinsert/2");
+                            break;
+                        case "11":
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Abrir Url de Syn Delete Only Datos");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.AbrirURL(@"http://localhost/posmev4/core_merge/merge_of_posme_merge_to_posme_data_delete/2");
+                            break;
+                        case "12":
+                            Console.WriteLine($"\n\n");
+                            Console.WriteLine($"Abrir Url de Syn Clear File");
+                            Console.WriteLine($"*******************************************");
+                            Console.WriteLine($"*******************************************");
+                            Function.AbrirURL(@"http://localhost/posmev4/core_merge/merge_of_posme_merge_to_posme_initialize/2");
+                            break;
+
+
+
+                        case "03":
                             Console.WriteLine($"\n\n");
                             Console.WriteLine($"Mover carpeta de posMe para Instalar");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
-                            MoveFolderWithBackup(@"C:\\TeamDS-Importacion\\v4posme", @"C:\\xampp\\teamds2\\nsSystem\\v4posme");
+                            Function.MoveFolderWithBackup(@"C:\\TeamDS-Importacion\\v4posme", @"C:\\xampp\\teamds2\\nsSystem\\v4posme");
                             break;
-                        case "4":
+                        case "04":
                             Console.WriteLine($"\n\n");
                             Console.WriteLine($"Mover carpeta de posMe para Actualizar");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
-                            MoveFolderWithBackupToUpdate(@"C:\\TeamDS-Importacion\\v4posme", @"C:\\xampp\\teamds2\\nsSystem\\v4posme");
+                            Function.MoveFolderWithBackupToUpdate(@"C:\\TeamDS-Importacion\\v4posme", @"C:\\xampp\\teamds2\\nsSystem\\v4posme");
                             break;
-                        case "5":
+                        case "05":
                             // Llamada a la nueva función para mover archivos DLL
                             Console.WriteLine($"\n\n");
                             Console.WriteLine($"Mover archivo DLL guardian");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
-                            MoveFileDllGuardian(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\dll\\ixed.8.0ts.win", @"C:\\xampp\\php\\ext\\ixed.8.0ts.win");
+                            Function.MoveFileDllGuardian(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\dll\\ixed.8.0ts.win", @"C:\\xampp\\php\\ext\\ixed.8.0ts.win");
                             break;
 
-                        case "6":
+                        case "06":
                             // Crear un acceso directo en el escritorio
                             Console.WriteLine($"\n\n");
                             Console.WriteLine($"Crear acceso directo de posMe");
@@ -134,28 +200,21 @@ namespace v4posme_console_configuration
                             }
                             else
                             {
-                                CrearAccesoDirecto(accesoDirecto, "http://localhost/posmev4/", @"C:\\Windows\\System32\\shell32.dll,14");
+                                Function.CrearAccesoDirecto(accesoDirecto, "http://localhost/posmev4/", @"C:\\Windows\\System32\\shell32.dll,14");
                                 Console.WriteLine("Acceso directo creado correctamente en el escritorio.");
                             }
 
                             break;
 
-                        case "7":
-                            RealizarReemplazos(reemplazos);
+                        case "07":
+                            Function.RealizarReemplazos(Function.GetDataToRamplaze());
                             break;
 
-                        case "8":
+                        case "02":
                             Console.WriteLine("Saliendo del programa...");
                             return;
 
                         default:
-
-                            //Console.WriteLine($"\n\n");
-                            //Console.WriteLine($"Limpiar Datos");
-                            //Console.WriteLine($"*******************************************");
-                            //Console.WriteLine($"*******************************************");
-                            //ExecuteBatchFile(@"C:\\xampp\\teamds2\\nsSystem\\v4posme\\public\\resource\\file_job\\archivo.bat");
-
                             Console.WriteLine("Opción no válida. Intenta nuevamente o dicha accion se hace manual.");
                             break;
                     }
@@ -176,212 +235,7 @@ namespace v4posme_console_configuration
 
         }
 
-
-        static void RealizarReemplazos(List<Reemplazo> reemplazos)
-        {
-            Console.WriteLine($"Remplazar archivos");
-            Console.WriteLine($"*******************************************");
-            Console.WriteLine($"*******************************************");
-
-            // Reemplazar líneas en cada archivo basado en los objetos en la lista
-            foreach (var reemplazo in reemplazos)
-            {
-                if (System.IO.File.Exists(reemplazo.NombreArchivo))
-                {
-                    // Leer todo el contenido del archivo
-                    string contenido = System.IO.File.ReadAllText(reemplazo.NombreArchivo);
-
-                    // Realizar el reemplazo
-                    if (contenido.Contains(reemplazo.Source) && !contenido.Contains(reemplazo.Target))
-                    {
-                        contenido = contenido.Replace(reemplazo.Source, reemplazo.Target);
-                        System.IO.File.WriteAllText(reemplazo.NombreArchivo, contenido);
-                        reemplazo.LineaEncontrada = true;
-
-                    }
-
-
-                }
-                else
-                {
-                    Console.WriteLine($"Archivo no encontrado: {reemplazo.NombreArchivo}");
-                }
-
-            }
-
-            // Mostrar resumen al final            
-            foreach (var reemplazo in reemplazos)
-            {
-                if (!reemplazo.LineaEncontrada)
-                Console.WriteLine($"No remplazado: {reemplazo.NombreArchivo} -> {reemplazo.Target} ");                
-            }
-        }
-
-        static void CrearAccesoDirecto(string ruta, string url, string rutaIcono)
-        {
-            var shell                   = new WshShell();
-            IWshShortcut accesoDirecto  = (IWshShortcut)shell.CreateShortcut(ruta);
-            accesoDirecto.TargetPath    = url;
-            accesoDirecto.IconLocation  = rutaIcono;  // Establecer el ícono
-            accesoDirecto.Save();
-        }
-
-
-        static void MoveFileDllGuardian(string sourcePath, string destinationPath)
-        {
-            try
-            {
-                if (!System.IO.File.Exists(sourcePath))
-                {
-                    Console.WriteLine($"El archivo de origen no existe: {sourcePath}");
-                    return;
-                }
-
-                if (System.IO.File.Exists(destinationPath))
-                {
-                    Console.WriteLine($"El archivo de destino ya existe y no será reemplazado: {destinationPath}");
-                    return;
-                }
-
-                string destinationDirectory = Path.GetDirectoryName(destinationPath);
-
-                if (!Directory.Exists(destinationDirectory))
-                {
-                    Directory.CreateDirectory(destinationDirectory);
-                }
-
-                System.IO.File.Move(sourcePath, destinationPath);
-                Console.WriteLine($"Archivo movido exitosamente a: {destinationPath}");
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al mover el archivo: {ex.Message}");
-            }
-        }
-
-        static void ExecuteBatchFile(string batchFilePath)
-        {
-            try
-            {
-                if (!System.IO.File.Exists(batchFilePath))
-                {
-                    Console.WriteLine($"El archivo .bat no existe: {batchFilePath}");
-                    return;
-                }
-
-                System.Diagnostics.Process process = new System.Diagnostics.Process();
-                process.StartInfo.FileName = batchFilePath;
-                process.StartInfo.UseShellExecute = true;
-                process.Start();
-
-                Console.WriteLine($"Archivo .bat ejecutado correctamente: {batchFilePath}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al ejecutar el archivo .bat: {ex.Message}");
-            }
-        }
-
-
-        static void MoveFolderWithBackup(string sourceFolder, string destinationFolder)
-        {
-            try
-            {
-                if (!Directory.Exists(sourceFolder))
-                {
-                    Console.WriteLine($"La carpeta de origen no existe: {sourceFolder}");
-                    return;
-                }
-
-                if (Directory.Exists(destinationFolder))
-                {
-                    string backupFolder = destinationFolder + "_backup_" + DateTime.Now.ToString("yyyy_MM_ddH_Hmmss");
-                    Directory.Move(destinationFolder, backupFolder);
-                    Console.WriteLine($"Carpeta de destino respaldada como: {backupFolder}");
-                }
-
-                Directory.CreateDirectory(destinationFolder);
-                foreach (string file in Directory.GetFiles(sourceFolder, "*", SearchOption.AllDirectories))
-                {
-                    string destinationFile = file.Replace(sourceFolder, destinationFolder);
-                    string destinationDir = Path.GetDirectoryName(destinationFile);
-
-                    if (!Directory.Exists(destinationDir))
-                    {
-                        Directory.CreateDirectory(destinationDir);
-                    }
-
-                    System.IO.File.Copy(file, destinationFile, true);
-                }
-
-                Console.WriteLine($"Carpeta movida exitosamente a: {destinationFolder}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al mover la carpeta: {ex.Message}");
-            }
-        }
         
-        static void MoveFolderWithBackupToUpdate(string sourceFolder, string destinationFolder)
-        {
-            try
-            {
-                var excludedFiles = new HashSet<string>
-                {
-                    "direct-ticket-logo-micro-finanza.jpg", // Reemplaza con los nombres de archivo exactos
-                    "direct-ticket-logo-micro-finanza.png",
-                    "logo-micro-finanza.jpg",
-                    "logo-micro-finanza.png"
-                };
-
-
-                if (!Directory.Exists(sourceFolder))
-                {
-                    Console.WriteLine($"La carpeta de origen no existe: {sourceFolder}");
-                    return;
-                }
-
-                if (Directory.Exists(destinationFolder))
-                {
-                    string backupFolder = destinationFolder + "_backup_" + DateTime.Now.ToString("yyyy_MM_ddH_Hmmss");
-                    Directory.Move(destinationFolder, backupFolder);
-                    Console.WriteLine($"Carpeta de destino respaldada como: {backupFolder}");
-                }
-
-                Directory.CreateDirectory(destinationFolder);
-                foreach (string file in Directory.GetFiles(sourceFolder, "*", SearchOption.AllDirectories))
-                {
-                    // Obtiene el nombre del archivo
-                    string fileName = Path.GetFileName(file);
-
-                    // Si el archivo está en la lista de exclusión, lo saltamos
-                    if (excludedFiles.Contains(fileName))
-                    {
-                        Console.WriteLine($"Archivo excluido: {fileName}");
-                        continue;
-                    }
-
-
-                    string destinationFile  = file.Replace(sourceFolder, destinationFolder);
-                    string destinationDir   = Path.GetDirectoryName(destinationFile);
-
-                    if (!Directory.Exists(destinationDir))
-                    {
-                        Directory.CreateDirectory(destinationDir);
-                    }
-
-                    System.IO.File.Copy(file, destinationFile, true);
-                }
-
-                Console.WriteLine($"Carpeta movida exitosamente a: {destinationFolder}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al mover la carpeta: {ex.Message}");
-            }
-        }
 
     }
 }
