@@ -78,8 +78,6 @@ namespace v4posme_console_configuration
                             
                             break;
                         case "17":
-
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Restaurar Restaurar Usuario");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
@@ -87,8 +85,6 @@ namespace v4posme_console_configuration
                             break;
 
                         case "16":
-
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Restaurar Clear DataBase posMe");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
@@ -96,8 +92,6 @@ namespace v4posme_console_configuration
                             break;
 
                         case "15":
-
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Restaurar Merge");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
@@ -105,8 +99,6 @@ namespace v4posme_console_configuration
                             break;
 
                         case "13":
-
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Restaurar Biometric");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
@@ -114,8 +106,6 @@ namespace v4posme_console_configuration
                             break;
 
                         case "14":
-
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Restaurar posMe");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
@@ -123,35 +113,30 @@ namespace v4posme_console_configuration
                             break;
 
                         case "08":
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Abrir Url de Syn Structuras");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
                             Function.AbrirURL(@"http://localhost/posmev4/core_merge/merge_of_posme_merge_to_posme_structure/2");
                             break;
                         case "09":
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Abrir Url de Syn Insert end Update Datos");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
                             Function.AbrirURL(@"http://localhost/posmev4/core_merge/merge_of_posme_merge_to_posme_data_insert_and_update/2");
                             break;
                         case "10":
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Abrir Url de Syn Insert Only Datos");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
                             Function.AbrirURL(@"http://localhost/posmev4/core_merge/merge_of_posme_merge_to_poeme_data_onlyinsert/2");
                             break;
                         case "11":
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Abrir Url de Syn Delete Only Datos");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
                             Function.AbrirURL(@"http://localhost/posmev4/core_merge/merge_of_posme_merge_to_posme_data_delete/2");
                             break;
                         case "12":
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Abrir Url de Syn Clear File");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
@@ -161,14 +146,12 @@ namespace v4posme_console_configuration
 
 
                         case "03":
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Mover carpeta de posMe para Instalar");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
                             Function.MoveFolderWithBackup(@"C:\\TeamDS-Importacion\\v4posme", @"C:\\xampp\\teamds2\\nsSystem\\v4posme");
                             break;
                         case "04":
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Mover carpeta de posMe para Actualizar");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
@@ -176,7 +159,6 @@ namespace v4posme_console_configuration
                             break;
                         case "05":
                             // Llamada a la nueva función para mover archivos DLL
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Mover archivo DLL guardian");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
@@ -185,7 +167,6 @@ namespace v4posme_console_configuration
 
                         case "06":
                             // Crear un acceso directo en el escritorio
-                            Console.WriteLine($"\n\n");
                             Console.WriteLine($"Crear acceso directo de posMe");
                             Console.WriteLine($"*******************************************");
                             Console.WriteLine($"*******************************************");
@@ -219,7 +200,7 @@ namespace v4posme_console_configuration
                             break;
                     }
 
-                    Console.WriteLine("\nOperación finalizada. Presiona cualquier tecla para continuar...");
+                    Console.WriteLine("Operación finalizada. Presiona cualquier tecla para continuar...");
                     Console.ReadKey();
                 }
 
