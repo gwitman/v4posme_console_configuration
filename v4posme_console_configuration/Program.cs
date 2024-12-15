@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using IWshRuntimeLibrary; // Necesario para crear accesos directos
 
+
 namespace v4posme_console_configuration
 {
 
@@ -15,9 +16,11 @@ namespace v4posme_console_configuration
 
     internal class Program
     {
+       
+
+
         static void Main(string[] args)
         {
-            
 
             Function objFunction = new Function();
             try
